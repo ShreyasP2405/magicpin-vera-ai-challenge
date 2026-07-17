@@ -809,7 +809,6 @@ def _resolve_action(trigger_id: str) -> dict[str, Any] | None:
         "template_params": _template_params(message, merchant, customer),
         **message,
     }
-    sent_suppression_keys.add(suppression_key)
     conversations[conversation_id] = {
         "merchant_id": merchant_id,
         "customer_id": customer_id,
