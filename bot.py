@@ -770,17 +770,29 @@ def _lookup_context(scope: str, context_id: str | None) -> dict[str, Any] | None
 
 
 def _resolve_action(trigger_id: str) -> dict[str, Any] | None:
+    print("===================================")
+    print("Trigger:", trigger_id)
+
     trigger = _lookup_context("trigger", trigger_id)
+    print("Trigger found:", trigger is not None)
+
     if not trigger:
         return None
-    suppression_key = trigger.get("suppression_key") or trigger.get("id") or trigger_id
-    if suppression_key in sent_suppression_keys:
-        return None
+
     merchant_id = trigger.get("merchant_id")
+    print("Merchant ID:", merchant_id)
+
     merchant = _lookup_context("merchant", merchant_id)
+    print("Merchant found:", merchant is not None)
+
     if not merchant:
         return None
+
+    print("Category slug:", merchant.get("category_slug"))
+
     category = _lookup_context("category", merchant.get("category_slug"))
+    print("Category found:", category is not None)
+    
     if not category:
         return None
     customer_id = trigger.get("customer_id")
