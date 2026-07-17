@@ -1,0 +1,15 @@
+.git
+.gitignore
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+*.log
+.env
+.env.*
+
+landing-page/node_modules/
+landing-page/dist/
+landing-page/.vite/
